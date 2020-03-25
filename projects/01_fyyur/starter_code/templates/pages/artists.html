@@ -1,16 +1,40 @@
-{% extends 'layouts/main.html' %}
-{% block title %}Fyyur | Artists{% endblock %}
+{% extends 'layouts/main.html' %} {% block title %}Fyyur | Artists{% endblock %}
 {% block content %}
 <ul class="items">
-	{% for artist in artists %}
-	<li>
-		<a href="/artists/{{ artist.id }}">
-			<i class="fas fa-users"></i>
-			<div class="item">
-				<h5>{{ artist.name }}</h5>
-			</div>
-		</a>
-	</li>
-	{% endfor %}
+  {% for artist in artists %}
+  <li>
+    <a href="/artists/{{ artist.id }}">
+      <i class="fas fa-users"></i>
+      <div class="item">
+        <h5>{{ artist.name }}</h5>
+      </div>
+    </a>
+  </li>
+  <button class="artist-btn-delete" artist-id="{{artist.id}}">
+    <i class="fas fa-times"></i>
+  </button>
+  <button class="artist-btn-edit" venue-id="{{artist.id}}">
+    <a href="/artists/{{ artist.id }}/edit"> <i class="fas fa-edit"></i></a>
+  </button>
+  {% endfor %}
 </ul>
+<style>
+  ul.items > li {
+    display: inline-block;
+    width: 60%;
+  }
+
+  button, a {
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+    color: black;
+    cursor: pointer;
+  }
+
+  a:hover, button:hover {
+	color: red;
+  }
+
+</style>
 {% endblock %}
